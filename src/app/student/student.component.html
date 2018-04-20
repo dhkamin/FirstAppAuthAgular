@@ -1,0 +1,32 @@
+<main role="main" class="container">
+
+    <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="matiers">
+    
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="coef">
+          <mat-header-cell *matHeaderCellDef> coef </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.coef}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="note ds">
+          <mat-header-cell *matHeaderCellDef> note ds </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.note.ds}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="note ex">
+          <mat-header-cell *matHeaderCellDef> note ex </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.note.ex}} </mat-cell>
+        </ng-container>
+    
+     
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"[routerLink]="['moyen',row.name ,row.coef,row.note.ds,row.note.ex ]" routerLinkActive="active"  ></mat-row>
+      </mat-table>
+    </div>
+    <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,57 @@
+<form [formGroup]="rForm" class="form-test" (ngSubmit)="MyFormSubmit(rForm.value)">
+
+  <mat-form-field>
+    <input matInput placeholder="name" formControlName="name" />
+    <mat-error *ngIf="rForm.controls['name'].invalid">please enter  name
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="lastname" formControlName="lastname" />
+    <mat-error *ngIf="rForm.controls['lastname'].invalid">please enter  last name
+      </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepickerFilter]="myFilter"[matDatepicker]="picker" placeholder="Choose your born date"formControlName="borndate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker></mat-datepicker>
+    <mat-error *ngIf="rForm.controls['borndate'].invalid">please enter  born  date</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Male or Female" formControlName="selectsexe">
+      <mat-option *ngFor="let sexe of sexes" [value]="sexe.value">
+        {{ sexe.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="email" formControlName="email" />
+    <mat-error *ngIf="rForm.controls['email'].invalid">please gve an ivalid mail</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="password" formControlName="pwd" />
+    <mat-error *ngIf="rForm.controls['pwd'].invalid">please gve an ivalid mail</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <span matPrefix>+216 &nbsp;</span>
+    <input type="tel" matInput placeholder="Telephone" formControlName="Telephone">
+    <mat-icon matSuffix>mode_edit</mat-icon>
+    <mat-error *ngIf="rForm.controls['Telephone'].invalid">please gve phone  number</mat-error>
+  </mat-form-field>
+
+ 
+
+ 
+   
+
+  
+  
+  
+ 
+  <button mat-raised-button color="primary" type="submit" [disabled]="!rForm.valid">Register!</button>
+  <button mat-raised-button   class="backg" >cansel!</button> 
+</form>
+
+{{rForm.value | json}}

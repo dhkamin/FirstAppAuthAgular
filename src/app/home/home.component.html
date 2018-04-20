@@ -1,0 +1,28 @@
+
+<app-menu></app-menu>
+
+<main role="main" class="container">
+
+  <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="etudiants"  >
+    
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="lastname">
+          <mat-header-cell *matHeaderCellDef> lastname </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.lastname}} </mat-cell>
+        </ng-container>
+    
+     
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['student',row.name ,row.lastname ]" routerLinkActive="active" ></mat-row>
+      </mat-table>
+    </div>
+
+ 
+    
+</main>
